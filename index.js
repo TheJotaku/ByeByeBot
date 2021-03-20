@@ -1,7 +1,7 @@
 // TODO: 
 // play local audio file ----  bye bye bye 
 // getting afk channel (look at roles and permissions within channels)
-
+// command after they are asked if they said goodbye 
 
 const Discord = require('discord.js')
 const client = new Discord.Client();
@@ -16,7 +16,7 @@ client.once('ready', () => {
   .catch(console.error);
 });
 
-client.on('message', message =>{
+client.on('message',async message =>{
 
     if(!message.content.startsWith(prefix) || message.author.bot) return;
 
@@ -43,9 +43,12 @@ client.on('message', message =>{
           break;
         
         case 'byebyebye':
+          const connection = await message.member.voice.channel.join();
+          connection.channel;
           message.channel.send("You may hate me but it ain't no lie Baby bye bye bye");
           break;
     }
+
       
 });
 
@@ -56,7 +59,7 @@ client.on('message', message =>{
           //console.log(newMember + " has joined a voice channel")
           return;
         } 
-        else if(oldMember.channel){
+        else if(oldMember.channel && newMember.member.user.id !== '822563903220351016'){
           // User leaves a voice channel
           //console.log(oldMember +" has left the voice channel"); 
          //TO DO: is there a way to get this to NOT display if a user leaves and AFK channel??????
