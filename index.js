@@ -65,4 +65,4 @@ client.on('message', message =>{
 });
 
 
-client.login('ODIyNTYzOTAzMjIwMzUxMDE2.YFUGVQ.0Piq9UJGQudhaxwsbRnSOQHaxXU');
+client.login('DiscordToken');
