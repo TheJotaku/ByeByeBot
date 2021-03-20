@@ -1,5 +1,6 @@
 // TODO: 
-// play local audio file ----  bye bye bye 
+// play local audio file ----  bye bye bye \
+// get bot to disconnect on command 
 // getting afk channel (look at roles and permissions within channels)
 // command after they are asked if they said goodbye 
 
@@ -47,6 +48,7 @@ client.on('message',async message =>{
           connection.channel;
           message.channel.send("You may hate me but it ain't no lie Baby bye bye bye");
           break;
+          
     }
 
       
@@ -63,7 +65,26 @@ client.on('message',async message =>{
           // User leaves a voice channel
           //console.log(oldMember +" has left the voice channel"); 
          //TO DO: is there a way to get this to NOT display if a user leaves and AFK channel??????
-          client.channels.cache.get('157705411422715905').send("<@"+newMember.member.user.id +">"+ ' Did you say bye to everyone?!');  
+         //'!yes' and '!no' does not trigger bot response in discord
+          client.channels.cache.get('157705411422715905').send("<@"+newMember.member.user.id +">"+ ' Did you say bye to everyone?! "!Yes" or "!No".');  
+         
+          client.on('message', message =>{
+            const args = message.content.slice(prefix.length).split(/ +/);
+            const command = args.shift().toLowerCase();
+            var cnt = 1; 
+            if(command === 'yes' && !newMember.channel && cnt ===1)
+            {
+              message.channel.send("Okay! Goodbye! :grin:");
+              cnt++;
+             
+            }
+            if(command === 'no' && !newMember.channel && cnt ===1)
+            {
+              message.channel.send("Well, get your ass back in there and say goodbye! :angry:");
+              cnt++;
+            }
+             
+          })
         }
 });
 
