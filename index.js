@@ -2,6 +2,8 @@
 // play local audio file ----  bye bye bye \
 // get bot to disconnect on command 
 // getting afk channel (look at roles and permissions within channels)
+// !yes and !no code duplicate bug fix 
+// get users in a voice channel so message does not display if there is only one person in the voice channel 
  
 
 const Discord = require('discord.js')
@@ -37,9 +39,9 @@ client.on('message',async message =>{
           message.channel.send("You mean goodbye, right?");
           break;
 
-        case 'fuckyou':
+        case 'ihateyou':
           message.guild.member(message.author).voice.setChannel(null, "");
-          message.channel.send("<@"+message.author.id +">"+ " No FUCK YOU!!!!!");
+          message.channel.send("<@"+message.author.id +">"+ " get wrecked kid! :cry::rofl:");
           break;
         
         case 'thebyebyebot':
