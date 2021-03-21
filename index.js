@@ -2,13 +2,13 @@
 // play local audio file ----  bye bye bye \
 // get bot to disconnect on command 
 // getting afk channel (look at roles and permissions within channels)
-// command after they are asked if they said goodbye 
+ 
 
 const Discord = require('discord.js')
 const client = new Discord.Client();
 const prefix = '!';
-const path = require('path');
-const botCommandsFile = new Discord.MessageAttachment(path.join(__dirname,"./ConfigFiles/ByeByeBotCommands.html"));
+//const path = require('path');
+//const botCommandsFile = new Discord.MessageAttachment(path.join(__dirname,"./ConfigFiles/ByeByeBotCommands.html"));
 
 client.once('ready', () => {
   console.log('ByeByeBot Is Now Online');
@@ -26,8 +26,11 @@ client.on('message',async message =>{
 
     switch (command){
         case 'tellbyebye':
-          message.channel.send("The Bot commands can be found in the following attachment:");
-          message.channel.send(botCommandsFile);
+          //message.channel.send("The Bot commands can be found in the following attachment:");
+         // message.channel.send(botCommandsFile);
+         const botInfo = new Discord.MessageEmbed()
+         .setDescription('[The Bot commands can be found here.](http://bbbc.jtwp.org/)')
+         message.channel.send(botInfo);
           break; 
 
         case 'hello': 
@@ -62,26 +65,24 @@ client.on('message',async message =>{
           return;
         } 
         else if(oldMember.channel && newMember.member.user.id !== '822563903220351016'){
-          // User leaves a voice channel
+          // User leaves a voice channel AND if it is not our bot with its id. 
           //console.log(oldMember +" has left the voice channel"); 
-         //TO DO: is there a way to get this to NOT display if a user leaves and AFK channel??????
-         //'!yes' and '!no' does not trigger bot response in discord
           client.channels.cache.get('157705411422715905').send("<@"+newMember.member.user.id +">"+ ' Did you say bye to everyone?! "!Yes" or "!No".');  
          
           client.on('message', message =>{
             const args = message.content.slice(prefix.length).split(/ +/);
             const command = args.shift().toLowerCase();
-            var cnt = 1; 
-            if(command === 'yes' && !newMember.channel && cnt ===1)
+           
+            if(command === 'yes' && !newMember.channel)
             {
               message.channel.send("Okay! Goodbye! :grin:");
-              cnt++;
+              
              
             }
-            if(command === 'no' && !newMember.channel && cnt ===1)
+            if(command === 'no' && !newMember.channel)
             {
               message.channel.send("Well, get your ass back in there and say goodbye! :angry:");
-              cnt++;
+             
             }
              
           })
