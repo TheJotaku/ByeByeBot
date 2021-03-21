@@ -10,7 +10,6 @@ Bot Commands:
 
 User will also be prompted with !Yes or !No after leaving a voice channel. 
 
-
 This bot was made with Node.js and Discord.js 
 
 Author: MrJotaku
