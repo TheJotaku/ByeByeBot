@@ -1,16 +1,18 @@
 // TODO: 
-// play local audio file ----  bye bye bye 
 // getting afk channel (look at roles and permissions within channels)
-// !yes and !no code duplicate bug fix 
 // get users in a voice channel so message does not display if there is only one person in the voice channel 
  
 
 const Discord = require('discord.js')
+const ytdl =  require('ytdl-core');
 const client = new Discord.Client();
-const prefix = '!';
-const path = require('path');
+const prefix = '!!';
 const byeByeByeTrack = "./Audio/ByeByeBye.mp3";
-const botCommandsFile = new Discord.MessageAttachment(path.join(__dirname,"./ConfigFiles/ByeByeBotCommands.html"));
+const drDD = "https://www.youtube.com/watch?v=aYekOTLmOLs&t=1s"; 
+var audioFile = "";
+
+//const path = require('path');
+//const botCommandsFile = new Discord.MessageAttachment(path.join(__dirname,"./ConfigFiles/ByeByeBotCommands.html"));
 
 client.once('ready', () => {
   console.log('ByeByeBot Is Now Online');
@@ -25,11 +27,13 @@ client.on('message',async message =>{
 
     const args = message.content.slice(prefix.length).split(/ +/);
     const command = args.shift().toLowerCase();
-
+    const messageUserID = "<@"+message.author.id +">"; 
+    const connection = await message.member.voice.channel.join();
+    
     switch (command){
         case 'tellbyebye':
-          //message.channel.send("The Bot commands can be found in the following attachment:");
-         message.channel.send(botCommandsFile);
+         //message.channel.send("The Bot commands can be found in the following attachment:");
+         // message.channel.send(botCommandsFile);
          const botInfo = new Discord.MessageEmbed()
          .setDescription('[The Bot commands can be found here.](http://bbbc.jtwp.org/)')
          message.channel.send(botInfo);
@@ -41,7 +45,7 @@ client.on('message',async message =>{
 
         case 'fuckyou':
           message.guild.member(message.author).voice.setChannel(null, "");
-          message.channel.send("<@"+message.author.id +">"+ " No FUCK YOU!!!!!");
+          message.channel.send(messageUserID + " No FUCK YOU!!!!!");
           break;
         
         case 'thebyebyebot':
@@ -49,23 +53,40 @@ client.on('message',async message =>{
           break;
         
         case 'byebyebye':
-          const connection = await message.member.voice.channel.join();
-          connection.channel;
-          const dispatcher = connection.play(byeByeByeTrack);
-          message.channel.send("<@"+message.author.id +">"+" You may hate me but it ain't no lie Baby bye bye bye");
+          audioFile = byeByeByeTrack;
+          connection.play(audioFile);
+          message.channel.send(messageUserID +" You may hate me but it ain't no lie Baby bye bye bye");
+          break;
+         
+        case 'gillette': 
+          audioFile = drDD;
+          connection.play(ytdl(audioFile, { filter: 'audioonly' }));  
+          message.channel.send(messageUserID +" RAUUUUUUUUULLLLLLL");
           break;
         
-          case 'kickbot':
-            await message.member.voice.channel.leave();
-            break; 
+        case 'kick':
+          await message.member.voice.channel.leave();
+          break; 
           
+        case 'pause':
+          connection.play(audioFile).pause(true);
+          break;
+
+        case 'resume':
+          //TODO: youtube will not resume? :(
+          connection.play(audioFile).resume();
+          break;
+
+        case 'user-info':
+          message.channel.send(`Your username: ${message.author.username}\nYour ID: ${message.author.id}`);
+          break;        
     }
 
-      
 });
 
     client.on('voiceStateUpdate', (oldMember,newMember) => { 
-     
+      const voiceUserID = "<@"+newMember.member.user.id +">";
+
       if(newMember.channel)
         {
           
@@ -78,10 +99,10 @@ client.on('message',async message =>{
          
           // User leaves a voice channel AND if it is not our bot with its id. 
           //console.log(oldMember +" has left the voice channel"); 
-          client.channels.cache.get('157705411422715905').send("<@"+newMember.member.user.id +">"+ ' Did you say bye to everyone?!');  
+          client.channels.cache.get('157705411422715905').send(voiceUserID+ ' Did you say bye to everyone?!');  
          
         }
 });
 
 
-client.login('discordtoken');
+client.login('DiscordToken');
