@@ -1,6 +1,5 @@
 // TODO: 
-// play local audio file ----  bye bye bye \
-// get bot to disconnect on command 
+// play local audio file ----  bye bye bye 
 // getting afk channel (look at roles and permissions within channels)
 // !yes and !no code duplicate bug fix 
 // get users in a voice channel so message does not display if there is only one person in the voice channel 
@@ -53,6 +52,10 @@ client.on('message',async message =>{
           connection.channel;
           message.channel.send("You may hate me but it ain't no lie Baby bye bye bye");
           break;
+        
+          case 'kickbot':
+          const disconnect = await message.member.voice.channel.leave();
+          disconnect.channel;
           
     }
 
@@ -60,34 +63,35 @@ client.on('message',async message =>{
 });
 
     client.on('voiceStateUpdate', (oldMember,newMember) => { 
+     
       if(newMember.channel)
         {
+          
           // User Joins a voice channel 
           //console.log(newMember + " has joined a voice channel")
+         
           return;
         } 
         else if(oldMember.channel && newMember.member.user.id !== '822563903220351016'){
+         
           // User leaves a voice channel AND if it is not our bot with its id. 
           //console.log(oldMember +" has left the voice channel"); 
           client.channels.cache.get('157705411422715905').send("<@"+newMember.member.user.id +">"+ ' Did you say bye to everyone?! "!Yes" or "!No".');  
          
-          client.on('message', message =>{
-            const args = message.content.slice(prefix.length).split(/ +/);
-            const command = args.shift().toLowerCase();
-           
-            if(command === 'yes' && !newMember.channel)
-            {
-              message.channel.send("Okay! Goodbye! :grin:");
-              
+          // client.on('message', message =>{
+          //   const args = message.content.slice(prefix.length).split(/ +/);
+          //   const command = args.shift().toLowerCase();
+            
+          //   if(oldMember.channel)
+          //   {
+          //    if(command === 'yess') {message.channel.send("Okay! Goodbye! :grin:");}
              
-            }
-            if(command === 'no' && !newMember.channel)
-            {
-              message.channel.send("Well, get your ass back in there and say goodbye! :angry:");
-             
-            }
-             
-          })
+          //   }
+          //   if(command === 'nno' && !newMember.channel)
+          //   {
+          //     message.channel.send("Well, get your ass back in there and say goodbye! :angry:"); 
+          //   }
+          // })
         }
 });
 
