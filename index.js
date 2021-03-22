@@ -52,7 +52,7 @@ client.on('message',async message =>{
           const connection = await message.member.voice.channel.join();
           connection.channel;
           const dispatcher = connection.play(byeByeByeTrack);
-          message.channel.send("You may hate me but it ain't no lie Baby bye bye bye");
+          message.channel.send("<@"+message.author.id +">"+" You may hate me but it ain't no lie Baby bye bye bye");
           break;
         
           case 'kickbot':
