@@ -1,0 +1,28 @@
+// grabs user info based off command 
+// user id and username 
+        case 'user-info':
+          message.channel.send(`Your username: ${message.author.username}\nYour ID: ${message.author.id}`);
+          break; 
+
+
+
+// playing youtube video via link 
+const ytdl =  require('ytdl-core');
+const drDD = "https://www.youtube.com/watch?v=aYekOTLmOLs&t=1s"; 
+ case 'gillette': 
+          audioFile = drDD;
+          connection.play(ytdl(audioFile, { filter: 'audioonly' }));  
+          message.channel.send(messageUserID +" RAUUUUUUUUULLLLLLL");
+          break;
+
+
+
+    //pause and resume 
+    // they do not really work 
+     case 'pause':
+          connection.play(byeByeByeTrack).pause(true);
+          break;
+
+        case 'resume':
+          connection.resume();
+          break;
