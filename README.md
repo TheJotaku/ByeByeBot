@@ -1,38 +1,7 @@
 <!DOCTYPE html>
 <html>
   <title>ByeByeBot Commands</title>
-<head>
-<style>
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  table-layout: fixed;
-  width: 100%;
-}
-
-td {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px; 
-
-}
-th {
-  border: 1px solid #dddddd;
-  text-align: center;
-  padding: 8px;
-}
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
-h3,h4{text-align: center;}
-
-#botCommand {
-	color:black;
-}
-</style>
-</head>
 <body>
-
 <h2>ByeByeBot</h2>
 <p><b>The main purpose of this bot was to send a message in a text channel tagging a user whenever they were to leave a voice channel. This messsage is simply asking if the user has said "bye" to everyone before disconnecting.</b></p>
 <p><b>Upon developing this bot other features have been added through commands. The commands can be found below.</b></p>
