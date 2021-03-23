@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 <body>
 <h2>ByeByeBot</h2>
