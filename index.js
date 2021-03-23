@@ -28,7 +28,7 @@ client.on('message',async message =>{
     switch (command){
         case 'tellbyebye':
          const botInfo = new Discord.MessageEmbed()
-         .setDescription('[The Bot commands can be found here.](http://bbbc.jtwp.org/)')
+         .setDescription('The Bot commands can be found [here.](https://thejotaku.github.io/ByeByeBot/)')
          message.channel.send(botInfo);
           break; 
 
