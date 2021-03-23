@@ -1,7 +1,6 @@
 // TODO: 
 // getting afk channel (look at roles and permissions within channels)
 // get users in a voice channel so message does not display if there is only one person in the voice channel 
-// HOST Static webpage
 
 const Discord = require('discord.js')
 const client = new Discord.Client();
