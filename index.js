@@ -4,13 +4,11 @@
 // HOST Static webpage
 
 const Discord = require('discord.js')
-
 const client = new Discord.Client();
 const prefix = '!!';
 const byeByeByeTrack = "./Audio/ByeByeBye.mp3";
 const path = require('path');
 const byeByeBotPng = new Discord.MessageAttachment(path.join(__dirname,"./Pictures/byebye.png"));
-//const botCommandsFile = new Discord.MessageAttachment(path.join(__dirname,"./ConfigFiles/ByeByeBotCommands.html"));
 
 client.once('ready', () => {
   console.log('ByeByeBot Is Now Online');
@@ -29,8 +27,6 @@ client.on('message',async message =>{
   
     switch (command){
         case 'tellbyebye':
-         //message.channel.send("The Bot commands can be found in the following attachment:");
-         // message.channel.send(botCommandsFile);
          const botInfo = new Discord.MessageEmbed()
          .setDescription('[The Bot commands can be found here.](http://bbbc.jtwp.org/)')
          message.channel.send(botInfo);

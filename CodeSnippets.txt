@@ -26,3 +26,10 @@ const drDD = "https://www.youtube.com/watch?v=aYekOTLmOLs&t=1s";
         case 'resume':
           connection.resume();
           break;
+
+
+
+// attaching file: 
+//const botCommandsFile = new Discord.MessageAttachment(path.join(__dirname,"./ConfigFiles/ByeByeBotCommands.html"));
+//message.channel.send("The Bot commands can be found in the following attachment:");
+         // message.channel.send(botCommandsFile);
