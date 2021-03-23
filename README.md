@@ -1,6 +1,3 @@
-<html>
-<body>
-<h2>ByeByeBot</h2>
 <p><b>The main purpose of this bot was to send a message in a text channel tagging a user whenever they were to leave a voice channel. This messsage is simply asking if the user has said "bye" to everyone before disconnecting.</b></p>
 <p><b>Upon developing this bot other features have been added through commands. The commands can be found below.</b></p>
 <br>
@@ -53,5 +50,3 @@
 <br>
 <h4><p>This is just a quick little project nothing fancy. Hope you have fun with it! &#128516;</p></h4>
 <h4><p>If you would like to add this bot to your discord you can by going <a href="https://discord.com/oauth2/authorize?client_id=822563903220351016&scope=bot&permissions=8">here.</a> </p></h4>
-</body>
-</html>
