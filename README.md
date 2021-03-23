@@ -23,7 +23,7 @@
     
   </tr>
   <tr>
-    <td id="botCommand">FuckYou</td>
+    <td id="botCommand">IHateYou</td>
     <td>Bot will disconnect the user from the current voice channel and then send a message in a text channel tagging the user.</td>  
   </tr>
   <tr>
