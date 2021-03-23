@@ -9,7 +9,7 @@ const client = new Discord.Client();
 const prefix = '!!';
 const byeByeByeTrack = "./Audio/ByeByeBye.mp3";
 const path = require('path');
-const byeByeBot = new Discord.MessageAttachment(path.join(__dirname,"./Pictures/byebye.png"));
+const byeByeBotPng = new Discord.MessageAttachment(path.join(__dirname,"./Pictures/byebye.png"));
 //const botCommandsFile = new Discord.MessageAttachment(path.join(__dirname,"./ConfigFiles/ByeByeBotCommands.html"));
 
 client.once('ready', () => {
@@ -46,28 +46,42 @@ client.on('message',async message =>{
           break;
         
         case 'thebyebyebot':
-          message.channel.send(messageUserID+ " Don't Think It! Don't Say It!", {files: [byeByeBot]});
+          message.channel.send(messageUserID+ " Don't Think It! Don't Say It!", {files: [byeByeBotPng]});
           break;
         
         case 'byebyebye':
+          if(!message.member.voice.channel){ message.channel.send(messageUserID +" You must be in a voice channel to use this command.");}
+          else{
           const connection = await message.member.voice.channel.join();
           connection.play(byeByeByeTrack);
           message.channel.send(messageUserID +" You may hate me but it ain't no lie Baby bye bye bye");
-          var isConnected = true; 
+        }
           break;
         
         case 'kick':
-          if (isConnected === true){
-            await message.member.voice.channel.leave();
+          if (!message.member.voice.channel){
+            message.channel.send(messageUserID +" ByeByeBye cannot be kicked.");
           }
           else {
-            message.channel.send(messageUserID +" ByeByeBye cannot be kicked.");
+            await message.member.voice.channel.leave();
           };
           break; 
 
         case 'hello':
           message.channel.send(messageUserID +" I don't know why you say hello, I say goodbye!");
           break; 
+
+         case 'creator':
+          const byeGitRepo = new Discord.MessageEmbed()
+          .setDescription('I was created by MrJotaku! if you would like to download my source code you can fine it [here.](https://github.com/TheJotaku/ByeByeBot)')
+          message.channel.send(byeGitRepo);
+          break;
+        
+        case 'addurl':
+        const addBotUrl = new Discord.MessageEmbed()
+        .setDescription('If you would like to add this bot to another server, you may do so by going to this [link.](https://discord.com/oauth2/authorize?client_id=822563903220351016&scope=bot&permissions=8)')
+        message.channel.send(addBotUrl);
+        break; 
     }
 
 });
