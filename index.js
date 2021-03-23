@@ -26,8 +26,7 @@ client.on('message',async message =>{
     const args = message.content.slice(prefix.length).split(/ +/);
     const command = args.shift().toLowerCase();
     const messageUserID = "<@"+message.author.id +">"; 
-    const connection = await message.member.voice.channel.join();
-    
+  
     switch (command){
         case 'tellbyebye':
          //message.channel.send("The Bot commands can be found in the following attachment:");
@@ -37,8 +36,8 @@ client.on('message',async message =>{
          message.channel.send(botInfo);
           break; 
 
-        case 'hello': 
-          message.channel.send("You mean goodbye, right?");
+        case 'hey': 
+          message.channel.send("You mean bye, right?");
           break;
 
         case 'fuckyou':
@@ -54,13 +53,19 @@ client.on('message',async message =>{
           const connection = await message.member.voice.channel.join();
           connection.play(byeByeByeTrack);
           message.channel.send(messageUserID +" You may hate me but it ain't no lie Baby bye bye bye");
+          var isConnected = true; 
           break;
         
         case 'kick':
-          await message.member.voice.channel.leave();
+          if (isConnected === true){
+            await message.member.voice.channel.leave();
+          }
+          else {
+            message.channel.send(messageUserID +" ByeByeBye cannot be kicked.");
+          };
           break; 
 
-        case 'goodbye':
+        case 'hello':
           message.channel.send(messageUserID +" I don't know why you say hello, I say goodbye!");
           break; 
     }
