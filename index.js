@@ -59,12 +59,8 @@ client.on('message',async message =>{
           break;
         
         case 'kick':
-          if (!message.member.voice.channel){
-            message.channel.send(messageUserID +" ByeByeBye cannot be kicked.");
-          }
-          else {
-            await message.member.voice.channel.leave();
-          };
+          if (!message.member.voice.channel){message.channel.send(messageUserID +" ByeByeBye cannot be kicked.");}
+          else {await message.member.voice.channel.leave();}
           break; 
 
         case 'hello':
@@ -73,11 +69,11 @@ client.on('message',async message =>{
 
          case 'creator':
           const byeGitRepo = new Discord.MessageEmbed()
-          .setDescription('I was created by MrJotaku! if you would like to download my source code you can fine it [here.](https://github.com/TheJotaku/ByeByeBot)')
+          .setDescription('I was created by MrJotaku! If you would like to download my source code you can fine it [here.](https://github.com/TheJotaku/ByeByeBot)')
           message.channel.send(byeGitRepo);
           break;
         
-        case 'addurl':
+        case 'addbot':
         const addBotUrl = new Discord.MessageEmbed()
         .setDescription('If you would like to add this bot to another server, you may do so by going to this [link.](https://discord.com/oauth2/authorize?client_id=822563903220351016&scope=bot&permissions=8)')
         message.channel.send(addBotUrl);
