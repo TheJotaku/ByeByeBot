@@ -49,5 +49,3 @@
     <td>Displays URL to add bot to another server.</td>
    </tr>
 </table>
-<br>
- <br> 
