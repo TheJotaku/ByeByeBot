@@ -1,14 +1,13 @@
 // TODO: 
-// get users in a voice channel so message does not display if there is only one person in the voice channel 
-//Bye bye bot gets called in AFK server - like if bot does not have permissions to speak handle this case. 
-// fix admin still getting messages in AFK channels. 
+// Bye bye bot gets called in AFK server - like if bot does not have permissions to speak handle this case. 
+// clean up no need instantiate multiple messageembeded objects. 
 const Discord = require('discord.js')
 const client = new Discord.Client();
 const prefix = '!!';
 const byeByeByeTrack = "./Audio/ByeByeBye.mp3";
 const path = require('path');
 const byeByeBotPng = new Discord.MessageAttachment(path.join(__dirname,"./Pictures/byebye.png"));
-
+//const msgEmbed = new Discord.MessageEmbed(); <================================================================== use this methond for sending embeded messages 
 client.once('ready', () => {
   console.log('ByeByeBot Is Now Online');
   client.user.setPresence({ activity: { name: '!!TellByeBye' }, status: 'available' })
@@ -63,7 +62,7 @@ client.on('message',async message =>{
 
          case 'creator':
           const byeGitRepo = new Discord.MessageEmbed()
-          .setDescription('I was created by MrJotaku! If you would like to download my source code you can fine it [here.](https://github.com/TheJotaku/ByeByeBot)')
+          .setDescription('I was created by MrJotaku! If you would like to download my source code you can find it [here.](https://github.com/TheJotaku/ByeByeBot)')
           message.channel.send(byeGitRepo);
           break;
         
@@ -77,11 +76,11 @@ client.on('message',async message =>{
 
 });
 
-    client.on('voiceStateUpdate', (oldMember,newMember) => { 
-      const voiceUserID = "<@"+newMember.member.user.id +">";
+client.on('voiceStateUpdate', (oldMember,newMember) => { 
+    const voiceUserID = "<@"+newMember.member.user.id +">";
+      
       if(newMember.channel)
         {
-         
           // User Joins a voice channel 
           //console.log(newMember + " has joined a voice channel")
          
@@ -92,15 +91,17 @@ client.on('message',async message =>{
          // ignores AFK Channels 
           const speakPermission = oldMember.channel.permissionsFor(oldMember.member);
           const canSpeak = speakPermission.has(Discord.Permissions.FLAGS.SPEAK);
-          if (canSpeak === true){ // if the user is an admit in their channel as of now they still get a message sent. 
+          const voiceChannelCount = oldMember.channel.members.size;
+          // Must add one to if bc if there are 2 people in a voice channel and one leaves then the bot will only recognize one person being in the channel 
+          // upone leaving and the conditional statement wont execute correcntly for more than one person in a voice channel. 
+          const voiceCount = voiceChannelCount + 1; 
+          if (canSpeak === true && voiceCount > 1 ){ // if the user is an admit in their channel as of now they still get a message sent. 
           //console.log(oldMember +" has left the voice channel"); 
           client.channels.cache.get('157705411422715905').send(voiceUserID+ ' Did you say bye to everyone?!');  
-
          }
            
-         
-        }
+      }
 });
 
 
-client.login('DiscordToken');
+client.login('DiscotdToken');
