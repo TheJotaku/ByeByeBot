@@ -1,6 +1,7 @@
 // TODO: 
 // get users in a voice channel so message does not display if there is only one person in the voice channel 
 //Bye bye bot gets called in AFK server - like if bot does not have permissions to speak handle this case. 
+// fix admin still getting messages in AFK channels. 
 const Discord = require('discord.js')
 const client = new Discord.Client();
 const prefix = '!!';
@@ -86,12 +87,12 @@ client.on('message',async message =>{
          
           return;
         } 
+         // User leaves a voice channel AND if it is not our bot with its id.
         else if(oldMember.channel && newMember.member.user.id !== '822563903220351016'){
          // ignores AFK Channels 
           const speakPermission = oldMember.channel.permissionsFor(oldMember.member);
           const canSpeak = speakPermission.has(Discord.Permissions.FLAGS.SPEAK);
-          if (canSpeak === true){
-          // User leaves a voice channel AND if it is not our bot with its id. 
+          if (canSpeak === true){ // if the user is an admit in their channel as of now they still get a message sent. 
           //console.log(oldMember +" has left the voice channel"); 
           client.channels.cache.get('157705411422715905').send(voiceUserID+ ' Did you say bye to everyone?!');  
 
