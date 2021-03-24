@@ -7,17 +7,14 @@
   <tr>
     <th>Commands</th>
     <th>Description</th>
-  
   </tr>
   <tr>
     <td id="botCommand">TellByeBye</td>
     <td>Bot will display a message with a hyperlink listing all commands.</td>
-   
   </tr>
   <tr>
     <td id="botCommand">Hey</td>
-    <td>Bot responds with "You mean bye, right?"</td>
-    
+    <td>Bot responds with "You mean bye, right?"</td>  
   </tr>
   <tr>
     <td id="botCommand">GoAway</td>
