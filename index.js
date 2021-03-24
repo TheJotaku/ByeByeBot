@@ -1,7 +1,6 @@
 // TODO: 
-// getting afk channel (look at roles and permissions within channels)
 // get users in a voice channel so message does not display if there is only one person in the voice channel 
-
+//Bye bye bot gets called in AFK server - like if bot does not have permissions to speak handle this case. 
 const Discord = require('discord.js')
 const client = new Discord.Client();
 const prefix = '!!';
@@ -23,9 +22,8 @@ client.on('message',async message =>{
     const args = message.content.slice(prefix.length).split(/ +/);
     const command = args.shift().toLowerCase();
     const messageUserID = "<@"+message.author.id +">"; 
-  
     switch (command){
-        case 'tellbyebye':
+        case 'tellbyebye': 
          const botInfo = new Discord.MessageEmbed()
          .setDescription('The Bot commands can be found [here.](https://thejotaku.github.io/ByeByeBot/)')
          message.channel.send(botInfo);
@@ -74,25 +72,31 @@ client.on('message',async message =>{
         message.channel.send(addBotUrl);
         break; 
     }
+ 
 
 });
 
     client.on('voiceStateUpdate', (oldMember,newMember) => { 
       const voiceUserID = "<@"+newMember.member.user.id +">";
-
       if(newMember.channel)
         {
-          
+         
           // User Joins a voice channel 
           //console.log(newMember + " has joined a voice channel")
          
           return;
         } 
         else if(oldMember.channel && newMember.member.user.id !== '822563903220351016'){
-         
+         // ignores AFK Channels 
+          const speaks = oldMember.channel.permissionsFor(oldMember.member);
+          const canSpeak = speaks.has(Discord.Permissions.FLAGS.SPEAK);
+          if (canSpeak === true){
           // User leaves a voice channel AND if it is not our bot with its id. 
           //console.log(oldMember +" has left the voice channel"); 
           client.channels.cache.get('157705411422715905').send(voiceUserID+ ' Did you say bye to everyone?!');  
+
+         }
+           
          
         }
 });
