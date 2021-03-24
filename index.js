@@ -34,7 +34,7 @@ client.on('message',async message =>{
           message.channel.send("You mean bye, right?");
           break;
 
-        case 'fuckyou':
+        case 'goaway':
           message.guild.member(message.author).voice.setChannel(null, "");
           message.channel.send(messageUserID + " No YOU GO AWAY!!!!!");
           break;
