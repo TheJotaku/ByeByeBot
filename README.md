@@ -1,7 +1,4 @@
-
-<h4><p>This is just a quick little project nothing fancy. Hope you have fun with it! &#128516;</p></h4>
-<h4><p>If you would like to add this bot to your discord you can by going <a href="https://discord.com/oauth2/authorize?client_id=822563903220351016&scope=bot&permissions=8">here.</a> </p><h4>
-<h3>All Commands Must Have A Prefix of !!<h3>
+<h3>All Commands Must Have A Prefix of !!</h3>
 <table> 
   <tr>
     <th>Commands</th>
@@ -49,3 +46,7 @@
     <td>Displays URL to add bot to another server.</td>
    </tr>
 </table>
+<br>
+<br>
+<h4><p>This is just a quick little project nothing fancy. Hope you have fun with it! &#128516;</p></h4>
+<h4><p>If you would like to add this bot to your discord you can by going <a href="https://discord.com/oauth2/authorize?client_id=822563903220351016&scope=bot&permissions=8">here.</a> </p><h4>
