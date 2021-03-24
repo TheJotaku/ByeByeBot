@@ -7,7 +7,7 @@
   <tr>
     <th>Commands</th>
     <th>Description</th>
-    
+  
   </tr>
   <tr>
     <td id="botCommand">TellByeBye</td>
@@ -26,6 +26,11 @@
   <tr>
     <td id="botCommand">TheByeByeBot</td>
     <td>Bot responds with "Don't Think It! Don't Say It!"</td> 
+  </tr>
+  <tr>
+   <tr>
+    <td id="botCommand">Bison</td>
+    <td>Bot responds with bison pun.</td> 
   </tr>
   <tr>
     <td id="botCommand">ByeByeBye</td>
