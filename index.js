@@ -7,7 +7,7 @@ const prefix = '!!';
 const byeByeByeTrack = "./Audio/ByeByeBye.mp3";
 const path = require('path');
 const byeByeBotPng = new Discord.MessageAttachment(path.join(__dirname,"./Pictures/byebye.png"));
-//const msgEmbed = new Discord.MessageEmbed(); <================================================================== use this methond for sending embeded messages 
+const msgEmbed = new Discord.MessageEmbed();
 client.once('ready', () => {
   console.log('ByeByeBot Is Now Online');
   client.user.setPresence({ activity: { name: '!!TellByeBye' }, status: 'available' })
@@ -24,8 +24,7 @@ client.on('message',async message =>{
     const messageUserID = "<@"+message.author.id +">"; 
     switch (command){
         case 'tellbyebye': 
-         const botInfo = new Discord.MessageEmbed()
-         .setDescription('The Bot commands can be found [here.](https://thejotaku.github.io/ByeByeBot/)')
+         const botInfo = msgEmbed.setDescription('The Bot commands can be found [here.](https://thejotaku.github.io/ByeByeBot/)')
          message.channel.send(botInfo);
           break; 
 
@@ -61,14 +60,12 @@ client.on('message',async message =>{
           break; 
 
          case 'creator':
-          const byeGitRepo = new Discord.MessageEmbed()
-          .setDescription('I was created by MrJotaku! If you would like to download my source code you can find it [here.](https://github.com/TheJotaku/ByeByeBot)')
+          const byeGitRepo = msgEmbed.setDescription('I was created by MrJotaku! If you would like to download my source code you can find it [here.](https://github.com/TheJotaku/ByeByeBot)')
           message.channel.send(byeGitRepo);
           break;
         
         case 'addbot':
-        const addBotUrl = new Discord.MessageEmbed()
-        .setDescription('If you would like to add this bot to another server, you may do so by going to this [link.](https://discord.com/oauth2/authorize?client_id=822563903220351016&scope=bot&permissions=8)')
+        const addBotUrl = msgEmbed.setDescription('If you would like to add this bot to another server, you may do so by going to this [link.](https://discord.com/oauth2/authorize?client_id=822563903220351016&scope=bot&permissions=8)')
         message.channel.send(addBotUrl);
         break; 
     }
@@ -104,4 +101,4 @@ client.on('voiceStateUpdate', (oldMember,newMember) => {
 });
 
 
-client.login('DiscotdToken');
+client.login('DiscordToken');
