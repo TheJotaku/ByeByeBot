@@ -88,8 +88,8 @@ client.on('message',async message =>{
         } 
         else if(oldMember.channel && newMember.member.user.id !== '822563903220351016'){
          // ignores AFK Channels 
-          const speaks = oldMember.channel.permissionsFor(oldMember.member);
-          const canSpeak = speaks.has(Discord.Permissions.FLAGS.SPEAK);
+          const speakPermission = oldMember.channel.permissionsFor(oldMember.member);
+          const canSpeak = speakPermission.has(Discord.Permissions.FLAGS.SPEAK);
           if (canSpeak === true){
           // User leaves a voice channel AND if it is not our bot with its id. 
           //console.log(oldMember +" has left the voice channel"); 
