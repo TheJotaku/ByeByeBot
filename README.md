@@ -36,7 +36,7 @@
     <td id="botCommand">Kick</td>
     <td>This allows users to kick the bot from the current voice channel.</td>
    </tr>
-   <tr>
+  <tr>
     <td id="botCommand">Creator</td>
     <td>Displays creator info and link to github.</td>
    </tr>
@@ -48,4 +48,4 @@
 <br>
 <br>
 <h4><p>This is just a quick little project nothing fancy. Hope you have fun with it! &#128516;</p></h4>
-<h4><p>If you would like to add this bot to your discord you can by going <a href="https://discord.com/oauth2/authorize?client_id=822563903220351016&scope=bot&permissions=8">here.</a> </p><h4> 
+<h4><p>If you would like to add this bot to your discord you can by going <a href="https://discord.com/oauth2/authorize?client_id=822563903220351016&scope=bot&permissions=8">here.</a></p><h4> 
